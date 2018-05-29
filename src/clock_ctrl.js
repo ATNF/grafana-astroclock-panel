@@ -6,10 +6,11 @@ import './css/clock-panel.css!';
 const panelDefaults = {
     titleFontSize: '20px',
     clockFontSize: '28px',
+    padding: '15px',
     fontWeight: 'normal',
     bgColor: null,
     longitude: 116.632311,
-    clocks : [["Browser", ""], ["LST", "LST"], ["UTC", "UTC"], ["MRO", "Australia/Perth"], ["Marsfield", "Australia/Sydney"]]
+    clocks : [["UTC", "UTC"], ["LST", "LST"], ["Browser", ""], ["MRO", "Australia/Perth"]]
 };
 
 // Return the full Julian Date
@@ -85,6 +86,7 @@ export class ClockCtrl extends PanelCtrl {
                 this.time[i] = getLST(this.panel.longitude);
             }
             else if (this.panel.clocks[i][1] == "") {
+                // moment.tz.guess() not a function??
                 this.time[i] = moment().format('HH:mm:ss z');
             }
             else {
