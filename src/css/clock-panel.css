@@ -5,11 +5,10 @@
 }
 
 h2 {
-  font-size: 20px;
+    text-align: center;
 }
 
 th, td {
-    font-size : 28px;
     padding : 15px;
     text-align: center;
 }

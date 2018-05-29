@@ -1,5 +1,5 @@
-<div class="clock-panel" style="height: {{ctrl.height}}px">
-    <table style="width:100%">
+<div class="clock-panel">
+    <table style="width:100%;font-size:{{ctrl.panel.titleFontSize}};">
         <tr>
             <th>{{ctrl.panel.clocks[0][0]}}</th>
             <th>{{ctrl.panel.clocks[1][0]}}</th>
@@ -7,7 +7,7 @@
             <th>{{ctrl.panel.clocks[3][0]}}</th>
             <th>{{ctrl.panel.clocks[4][0]}}</th>
         </tr>
-        <tr>
+        <tr style="font-size: {{ctrl.panel.clockFontSize}};">
             <td>{{ctrl.time[0]}}</td>
             <td>{{ctrl.time[1]}}</td>
             <td>{{ctrl.time[2]}}</td>

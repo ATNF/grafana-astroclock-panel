@@ -1,0 +1,20 @@
+<div class="section gf-form-group">
+<div class="gf-form">
+  <label class="gf-form-label width-14">Title Font Size</label>
+  <input type="text" class="gf-form-input width-10" ng-model="ctrl.panel.titleFontSize" ng-change="ctrl.render()" ng-model-onblur>
+</div>
+<div class="gf-form">
+  <label class="gf-form-label width-14">Clock Font Size</label>
+  <input type="text" class="gf-form-input width-10" ng-model="ctrl.panel.clockFontSize" ng-change="ctrl.render()" ng-model-onblur>
+</div>
+<div class="gf-form">
+  <label class="gf-form-label width-14">12 or 24 hour</label>
+  <div class="gf-form-select-wrapper max-width-9">
+    <select class="input-small gf-form-input" ng-model="ctrl.panel.clockType" ng-options="t for t in ['12 hour', '24 hour', 'custom']" ng-change="ctrl.render()"></select>
+  </div>
+</div>
+<div class="gf-form">
+  <label class="gf-form-label width-14">Longitude (for LST)</label>
+  <input type="text" class="gf-form-input width-20" ng-model="ctrl.panel.longitude" ng-change="ctrl.render()" ng-model-onblur>
+</div>
+<spectrum-picker class="gf-form-input" ng-model="ctrl.panel.bgColor" ng-change="ctrl.render()" ></spectrum-picker>

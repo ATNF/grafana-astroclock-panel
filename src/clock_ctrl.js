@@ -4,6 +4,10 @@ import moment from './lib/moment-timezone-with-data.min';
 import './css/clock-panel.css!';
 
 const panelDefaults = {
+    titleFontSize: '20px',
+    clockFontSize: '28px',
+    fontWeight: 'normal',
+    bgColor: null,
     longitude: 116.632311,
     clocks : [["Browser", ""], ["LST", "LST"], ["UTC", "UTC"], ["MRO", "Australia/Perth"], ["Marsfield", "Australia/Sydney"]]
 };
@@ -62,6 +66,7 @@ export class ClockCtrl extends PanelCtrl {
     constructor($scope, $injector) {
         super($scope, $injector);
         _.defaults(this.panel, panelDefaults);
+        this.events.on('init-edit-mode', this.onInitEditMode.bind(this));
         this.time = []; 
         this.updateClock();
         // this.tz = moment.tz.guess();
@@ -71,10 +76,13 @@ export class ClockCtrl extends PanelCtrl {
         // });
     }
 
+    onInitEditMode() {
+        this.addEditorTab('Options', 'public/plugins/grafana-astroclock-panel/editor.html', 2);
+    }
     updateClock() {
         for (var i = 0; i < this.panel.clocks.length; i++) {
             if (this.panel.clocks[i][1] == "LST") {
-                this.time[i] = getLST(116.632311);
+                this.time[i] = getLST(this.panel.longitude);
             }
             else if (this.panel.clocks[i][1] == "") {
                 this.time[i] = moment().format('HH:mm:ss z');

@@ -1,7 +1,7 @@
 {
   "type": "panel",
   "name": "astroclock",
-  "id": "atnf-astroclock-panel",
+  "id": "grafana-astroclock-panel",
 
   "info": {
     "description": "ATNF clock panel for Grafana",
