@@ -1,18 +1,18 @@
 <div class="clock-panel" style="height: {{ctrl.height}}px">
     <table style="width:100%">
         <tr>
-            <th>UTC</th>
-            <th>MRO</th>
-            <th>Marsfield</th>
-            <th>LST</th>
-            <th>Browser {{ctrl.tz}}</th>
+            <th>{{ctrl.panel.clocks[0][0]}}</th>
+            <th>{{ctrl.panel.clocks[1][0]}}</th>
+            <th>{{ctrl.panel.clocks[2][0]}}</th>
+            <th>{{ctrl.panel.clocks[3][0]}}</th>
+            <th>{{ctrl.panel.clocks[4][0]}}</th>
         </tr>
         <tr>
-            <td>{{ctrl.utctime}}</td>
-            <td>{{ctrl.mrotime}}</td>
-            <td>{{ctrl.sydtime}}</td>
-            <td>{{ctrl.lst}}</td>
-            <td>{{ctrl.time}}</td>
+            <td>{{ctrl.time[0]}}</td>
+            <td>{{ctrl.time[1]}}</td>
+            <td>{{ctrl.time[2]}}</td>
+            <td>{{ctrl.time[3]}}</td>
+            <td>{{ctrl.time[4]}}</td>
         </tr>
     </table>
 </div>

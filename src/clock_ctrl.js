@@ -3,6 +3,11 @@ import moment from './lib/moment-timezone-with-data.min';
 //import astrojs from './lib/astro.js';
 import './css/clock-panel.css!';
 
+const panelDefaults = {
+    longitude: 116.632311,
+    clocks : [["Browser", ""], ["LST", "LST"], ["UTC", "UTC"], ["MRO", "Australia/Perth"], ["Marsfield", "Australia/Sydney"]]
+};
+
 // Return the full Julian Date
 // It is important to remember to include the timezone 
 // offset if setting this with a string
@@ -52,9 +57,12 @@ function getLST(lon){
     return zeropad(h) + ':' + zeropad(m) + ':' + zeropad(s);
 }
 
+
 export class ClockCtrl extends PanelCtrl {
     constructor($scope, $injector) {
         super($scope, $injector);
+        _.defaults(this.panel, panelDefaults);
+        this.time = []; 
         this.updateClock();
         // this.tz = moment.tz.guess();
              
@@ -64,11 +72,17 @@ export class ClockCtrl extends PanelCtrl {
     }
 
     updateClock() {
-        this.time = moment().format('HH:mm:ss z');
-        this.utctime = moment().utc().format('HH:mm:ss z');
-        this.mrotime = moment().tz('Australia/Perth').format('HH:mm:ss z');
-        this.sydtime = moment().tz('Australia/Sydney').format('HH:mm:ss z');
-        this.lst = getLST(116.632311);
+        for (var i = 0; i < this.panel.clocks.length; i++) {
+            if (this.panel.clocks[i][1] == "LST") {
+                this.time[i] = getLST(116.632311);
+            }
+            else if (this.panel.clocks[i][1] == "") {
+                this.time[i] = moment().format('HH:mm:ss z');
+            }
+            else {
+                this.time[i] = moment().tz(this.panel.clocks[i][1]).format('HH:mm:ss z');
+            }
+        }
         this.$timeout(() => { this.updateClock(); }, 1000);
     }
 }
