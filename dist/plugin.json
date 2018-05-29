@@ -1,0 +1,21 @@
+{
+  "type": "panel",
+  "name": "astroclock",
+  "id": "grafana-astroclock-panel",
+
+  "info": {
+    "description": "ATNF clock panel for Grafana",
+    "author": {
+      "name": "ATNF",
+      "url": "http://atnf.csiro.au"
+    },
+    "keywords": ["clock", "panel"],
+    "version": "0.0.1",
+    "updated": "2017-11-14"
+  },
+
+  "dependencies": {
+    "grafanaVersion": "4.6.0",
+    "plugins": [ ]
+  }
+}
