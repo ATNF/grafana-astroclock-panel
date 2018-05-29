@@ -10,6 +10,12 @@ module.exports = function(grunt) {
     clean: ["dist"],
 
     copy: {
+      momenttz: {
+        cwd: 'node_modules/moment-timezone/builds',
+        expand: true,
+        src: ['moment-timezone.min.js'],
+        dest: 'src/lib'
+      },
       src_to_dist: {
         cwd: 'src',
         expand: true,
@@ -20,6 +26,12 @@ module.exports = function(grunt) {
         expand: true,
         src: [ 'plugin.json', 'README.md' ],
         dest: 'dist',
+      },
+      lib: {
+        cwd: 'src',
+        expand: true,
+        src: ['**/lib/*'],
+        dest: 'dist'
       }
     },
 
@@ -34,7 +46,7 @@ module.exports = function(grunt) {
     babel: {
       options: {
         sourceMap: true,
-        presets:  ["env"],
+        presets:  ["es2015"],
         plugins: ['transform-es2015-modules-systemjs', "transform-es2015-for-of"],
       },
       dist: {
@@ -50,5 +62,5 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.registerTask('default', ['clean', 'copy:src_to_dist', 'copy:pluginDef', 'babel']);
+  grunt.registerTask('default', ['clean', 'copy', 'babel']);
 };

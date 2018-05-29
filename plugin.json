@@ -1,6 +1,6 @@
 {
   "type": "panel",
-  "name": "AstroClock",
+  "name": "astroclock",
   "id": "atnf-astroclock-panel",
 
   "info": {
