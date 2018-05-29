@@ -68,6 +68,7 @@ export class ClockCtrl extends PanelCtrl {
         super($scope, $injector);
         _.defaults(this.panel, panelDefaults);
         this.events.on('init-edit-mode', this.onInitEditMode.bind(this));
+        this.events.on('panel-teardown', this.onPanelTeardown.bind(this));
         this.time = []; 
         this.updateClock();
         // this.tz = moment.tz.guess();
@@ -80,6 +81,11 @@ export class ClockCtrl extends PanelCtrl {
     onInitEditMode() {
         this.addEditorTab('Options', 'public/plugins/grafana-astroclock-panel/editor.html', 2);
     }
+    
+    onPanelTeardown() {
+        this.$timeout.cancel(this.nextTickPromise);
+    }
+
     updateClock() {
         for (var i = 0; i < this.panel.clocks.length; i++) {
             if (this.panel.clocks[i][1] == "LST") {
@@ -94,6 +100,18 @@ export class ClockCtrl extends PanelCtrl {
             }
         }
         this.$timeout(() => { this.updateClock(); }, 1000);
+    }
+
+    link(scope, elem) {
+        this.events.on('render', () => {
+            const $panelContainer = elem.find('.panel-container');
+
+            if (this.panel.bgColor) {
+                $panelContainer.css('background-color', this.panel.bgColor);
+            } else {
+                $panelContainer.css('background-color', '');
+            }
+        });
     }
 }
 

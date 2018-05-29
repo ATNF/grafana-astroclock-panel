@@ -128,6 +128,7 @@ System.register(['app/plugins/sdk', './lib/moment-timezone-with-data.min', './cs
 
                     _.defaults(_this.panel, panelDefaults);
                     _this.events.on('init-edit-mode', _this.onInitEditMode.bind(_this));
+                    _this.events.on('panel-teardown', _this.onPanelTeardown.bind(_this));
                     _this.time = [];
                     _this.updateClock();
                     // this.tz = moment.tz.guess();
@@ -142,6 +143,11 @@ System.register(['app/plugins/sdk', './lib/moment-timezone-with-data.min', './cs
                     key: 'onInitEditMode',
                     value: function onInitEditMode() {
                         this.addEditorTab('Options', 'public/plugins/grafana-astroclock-panel/editor.html', 2);
+                    }
+                }, {
+                    key: 'onPanelTeardown',
+                    value: function onPanelTeardown() {
+                        this.$timeout.cancel(this.nextTickPromise);
                     }
                 }, {
                     key: 'updateClock',
@@ -161,6 +167,21 @@ System.register(['app/plugins/sdk', './lib/moment-timezone-with-data.min', './cs
                         this.$timeout(function () {
                             _this2.updateClock();
                         }, 1000);
+                    }
+                }, {
+                    key: 'link',
+                    value: function link(scope, elem) {
+                        var _this3 = this;
+
+                        this.events.on('render', function () {
+                            var $panelContainer = elem.find('.panel-container');
+
+                            if (_this3.panel.bgColor) {
+                                $panelContainer.css('background-color', _this3.panel.bgColor);
+                            } else {
+                                $panelContainer.css('background-color', '');
+                            }
+                        });
                     }
                 }]);
 
