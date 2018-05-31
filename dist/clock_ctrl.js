@@ -115,7 +115,7 @@ System.register(['app/plugins/sdk', './lib/moment-timezone-with-data.min', './cs
                 fontWeight: 'normal',
                 bgColor: null,
                 longitude: 116.632311,
-                clocks: [["UTC", "UTC"], ["LST", "LST"], ["Browser", ""], ["MRO", "Australia/Perth"]]
+                clocks: [["UTC", "UTC"], ["LST", "Local Sidereal Time"], ["Browser", ""], ["MRO", "Australia/Perth"]]
             };
 
             _export('ClockCtrl', ClockCtrl = function (_PanelCtrl) {
@@ -130,6 +130,7 @@ System.register(['app/plugins/sdk', './lib/moment-timezone-with-data.min', './cs
                     _this.events.on('init-edit-mode', _this.onInitEditMode.bind(_this));
                     _this.events.on('panel-teardown', _this.onPanelTeardown.bind(_this));
                     _this.time = [];
+                    _this.timezones = ["Local Sidereal Time"].concat(moment.tz.names());
                     _this.updateClock();
                     // this.tz = moment.tz.guess();
 
@@ -155,7 +156,7 @@ System.register(['app/plugins/sdk', './lib/moment-timezone-with-data.min', './cs
                         var _this2 = this;
 
                         for (var i = 0; i < this.panel.clocks.length; i++) {
-                            if (this.panel.clocks[i][1] == "LST") {
+                            if (this.panel.clocks[i][1] == "Local Sidereal Time") {
                                 this.time[i] = getLST(this.panel.longitude);
                             } else if (this.panel.clocks[i][1] == "") {
                                 // moment.tz.guess() not a function??

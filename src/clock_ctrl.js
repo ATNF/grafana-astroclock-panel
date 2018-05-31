@@ -10,7 +10,7 @@ const panelDefaults = {
     fontWeight: 'normal',
     bgColor: null,
     longitude: 116.632311,
-    clocks : [["UTC", "UTC"], ["LST", "LST"], ["Browser", ""], ["MRO", "Australia/Perth"]]
+    clocks : [["UTC", "UTC"], ["LST", "Local Sidereal Time"], ["Browser", ""], ["MRO", "Australia/Perth"]]
 };
 
 // Return the full Julian Date
@@ -70,6 +70,7 @@ export class ClockCtrl extends PanelCtrl {
         this.events.on('init-edit-mode', this.onInitEditMode.bind(this));
         this.events.on('panel-teardown', this.onPanelTeardown.bind(this));
         this.time = []; 
+        this.timezones = ["Local Sidereal Time"].concat(moment.tz.names());
         this.updateClock();
         // this.tz = moment.tz.guess();
              
@@ -88,7 +89,7 @@ export class ClockCtrl extends PanelCtrl {
 
     updateClock() {
         for (var i = 0; i < this.panel.clocks.length; i++) {
-            if (this.panel.clocks[i][1] == "LST") {
+            if (this.panel.clocks[i][1] == "Local Sidereal Time") {
                 this.time[i] = getLST(this.panel.longitude);
             }
             else if (this.panel.clocks[i][1] == "") {

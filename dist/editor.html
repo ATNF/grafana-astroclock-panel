@@ -27,3 +27,19 @@
         <spectrum-picker class="gf-form-input" ng-model="ctrl.panel.bgColor" ng-change="ctrl.render()" ></spectrum-picker>
     </span>
 </div>
+<div class="editor-row">
+    <h5 class="section-heading">&nbsp</h5>
+    <div ng-repeat="clock in ctrl.panel.clocks">
+        <div class="section gf-form-group">
+            <h5 class="section-heading">Clock {{$index + 1}}</h5>
+            <div class="gf-form" max-width-25>
+                                <label class="gf-form-label width-5">Title</label>
+                                <input type="text" class="input-small gf-form-input " ng-model="clock[0]" ng-change="ctrl.updateClock()" ng-model-onblur />
+            </div>
+            <div class="gf-form">
+                <label class="gf-form-label width-5">Timezone</label>
+                <select class="input-small gf-form-input" ng-model="clock[1]" ng-options="t for t in ctrl.timezones" ng-change="ctrl.updateClock()"></select>
+            </div>
+        </div>
+    </div>
+</div>
