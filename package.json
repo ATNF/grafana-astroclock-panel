@@ -2,11 +2,11 @@
 		"name": "astroclock",
 		"version": "0.0.2",
 		"license": "MIT",
-		"description": "ANTF Clock Panel with UTC, SITE, Local and LST Times",
+		"description": "Multiple clock panel with Local Sidereal Time",
 		"author": "Craig.Haskins@csiro.au",
 		"repository": {
 				"type": "git",
-				"url": "https://github.com/ATNF/grafana-astroclock-panel"
+				"url": "https://github.com/ATNF/atnf-astroclock-panel"
 		},
 		"main": "src/module.js",
 		"scripts": {

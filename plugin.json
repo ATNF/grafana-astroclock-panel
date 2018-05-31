@@ -1,17 +1,17 @@
 {
   "type": "panel",
   "name": "astroclock",
-  "id": "grafana-astroclock-panel",
+  "id": "atnf-astroclock-panel",
 
   "info": {
-    "description": "ATNF clock panel for Grafana",
+	"description": "Multiple clock panel with Local Sidereal Time",
     "author": {
-      "name": "ATNF",
+      "name": "CSIRO ATNF",
       "url": "http://atnf.csiro.au"
     },
-    "keywords": ["clock", "panel"],
-    "version": "0.0.1",
-    "updated": "2017-11-14"
+    "keywords": ["clock", "panel", "astronomy"],
+    "version": "0.0.2",
+    "updated": "2018-06-01"
   },
 
   "dependencies": {
