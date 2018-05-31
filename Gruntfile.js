@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.loadNpmTasks('grunt-execute');
+  //grunt.loadNpmTasks('grunt-execute');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
   grunt.initConfig({
@@ -10,12 +10,6 @@ module.exports = function(grunt) {
     clean: ["dist"],
 
     copy: {
-      momenttz: {
-        cwd: 'node_modules/moment-timezone/builds',
-        expand: true,
-        src: ['moment-timezone.min.js'],
-        dest: 'src/lib'
-      },
       src_to_dist: {
         cwd: 'src',
         expand: true,
