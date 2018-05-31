@@ -1,6 +1,6 @@
 {
-		"name": "astroclock",
-		"version": "0.0.2",
+		"name": "Astroclock",
+		"version": "0.0.3",
 		"license": "MIT",
 		"description": "Multiple clock panel with Local Sidereal Time",
 		"author": "Craig.Haskins@csiro.au",

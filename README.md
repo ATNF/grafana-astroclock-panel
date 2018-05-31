@@ -1,4 +1,4 @@
-# grafana-astroclock-panel
+# atnf-astroclock-panel
 
 This is a simple panel to display 3 clocks with different time zones plus Local Sidereal Time (LST).
 As used at The Australian SKA Pathfinder Telescope (http://www.atnf.csiro.au/projects/askap/index.html).
