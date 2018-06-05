@@ -80,7 +80,7 @@ export class ClockCtrl extends PanelCtrl {
     }
 
     onInitEditMode() {
-        this.addEditorTab('Options', 'public/plugins/grafana-astroclock-panel/editor.html', 2);
+        this.addEditorTab('Options', 'public/plugins/atnf-astroclock-panel/editor.html', 2);
     }
     
     onPanelTeardown() {
