@@ -127,11 +127,13 @@ System.register(['app/plugins/sdk', './lib/moment-timezone-with-data.min', './cs
                     var _this = _possibleConstructorReturn(this, (ClockCtrl.__proto__ || Object.getPrototypeOf(ClockCtrl)).call(this, $scope, $injector));
 
                     _.defaults(_this.panel, panelDefaults);
+
                     _this.events.on('init-edit-mode', _this.onInitEditMode.bind(_this));
                     _this.events.on('panel-teardown', _this.onPanelTeardown.bind(_this));
-                    _this.time = [];
                     _this.timezones = ["Local Sidereal Time"].concat(moment.tz.names());
-                    _this.updateClock();
+                    _this.time = [];
+                    _this.title = [];
+                    _this.render();
                     // this.tz = moment.tz.guess();
 
                     // astrojs.importPackages(['dates']);
@@ -151,22 +153,36 @@ System.register(['app/plugins/sdk', './lib/moment-timezone-with-data.min', './cs
                         this.$timeout.cancel(this.nextTickPromise);
                     }
                 }, {
-                    key: 'updateClock',
-                    value: function updateClock() {
+                    key: 'render',
+                    value: function render() {
                         var _this2 = this;
 
-                        for (var i = 0; i < this.panel.clocks.length; i++) {
-                            if (this.panel.clocks[i][1] == "Local Sidereal Time") {
-                                this.time[i] = getLST(this.panel.longitude);
-                            } else if (this.panel.clocks[i][1] == "") {
-                                // moment.tz.guess() not a function??
-                                this.time[i] = moment().format('HH:mm:ss z');
+                        if (this.elem != null) {
+                            var rect = this.elem.getBoundingClientRect();
+                            if (rect.width < 415) {
+                                this.panel.titleFontSize = '8px';
+                                this.panel.clockFontSize = '12px';
+                            } else if (rect.width < 640) {
+                                this.panel.titleFontSize = '12px';
+                                this.panel.clockFontSize = '16px';
                             } else {
-                                this.time[i] = moment().tz(this.panel.clocks[i][1]).format('HH:mm:ss z');
+                                this.panel.titleFontSize = '20px';
+                                this.panel.clockFontSize = '28px';
+                            }
+                            for (var i = 0; i < this.panel.clocks.length; i++) {
+                                this.title[i] = this.panel.clocks[i][0];
+                                if (this.panel.clocks[i][1] == "Local Sidereal Time") {
+                                    this.time[i] = getLST(this.panel.longitude);
+                                } else if (this.panel.clocks[i][1] == "") {
+                                    // moment.tz.guess() not a function??
+                                    this.time[i] = moment().format('HH:mm:ss z');
+                                } else {
+                                    this.time[i] = moment().tz(this.panel.clocks[i][1]).format('HH:mm:ss z');
+                                }
                             }
                         }
                         this.$timeout(function () {
-                            _this2.updateClock();
+                            _this2.render();
                         }, 1000);
                     }
                 }, {
@@ -174,9 +190,9 @@ System.register(['app/plugins/sdk', './lib/moment-timezone-with-data.min', './cs
                     value: function link(scope, elem) {
                         var _this3 = this;
 
+                        this.elem = elem.find('.clock-panel')[0];
                         this.events.on('render', function () {
                             var $panelContainer = elem.find('.panel-container');
-
                             if (_this3.panel.bgColor) {
                                 $panelContainer.css('background-color', _this3.panel.bgColor);
                             } else {
