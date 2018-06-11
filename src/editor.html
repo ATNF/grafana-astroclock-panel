@@ -34,11 +34,11 @@
             <h5 class="section-heading">Clock {{$index + 1}}</h5>
             <div class="gf-form" max-width-25>
                                 <label class="gf-form-label width-5">Title</label>
-                                <input type="text" class="input-small gf-form-input " ng-model="clock[0]" ng-change="ctrl.updateClock()" ng-model-onblur />
+                                <input type="text" class="input-small gf-form-input " ng-model="clock[0]" ng-change="ctrl.render()" ng-model-onblur />
             </div>
             <div class="gf-form">
                 <label class="gf-form-label width-5">Timezone</label>
-                <select class="input-small gf-form-input" ng-model="clock[1]" ng-options="t for t in ctrl.timezones" ng-change="ctrl.updateClock()"></select>
+                <select class="input-small gf-form-input" ng-model="clock[1]" ng-options="t for t in ctrl.timezones" ng-change="ctrl.render()"></select>
             </div>
         </div>
     </div>

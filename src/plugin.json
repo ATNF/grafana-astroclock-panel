@@ -10,7 +10,7 @@
       "url": "http://atnf.csiro.au"
     },
     "keywords": ["clock", "panel", "astronomy"],
-    "version": "0.0.4",
+    "version": "0.0.5",
     "updated": "2018-06-01",
     "logos": {
       "small": "img/logo.png",
@@ -18,7 +18,7 @@
     },
     "links": [
       {"name": "Project site", "url": "https://github.com/atnf/atnf-astroclock-panel"},
-      {"name": "MIT License", "url": "https://github.com/atnf/atnf-astroclock-panel/LICENSE"}
+      {"name": "MIT License", "url": "https://github.com/atnf/atnf-astroclock-panel/blob/master/LICENSE"}
     ]
   },
 

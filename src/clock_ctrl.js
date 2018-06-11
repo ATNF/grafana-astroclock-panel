@@ -64,14 +64,17 @@ function getLST(lon){
 
 
 export class ClockCtrl extends PanelCtrl {
+
     constructor($scope, $injector) {
         super($scope, $injector);
         _.defaults(this.panel, panelDefaults);
+
         this.events.on('init-edit-mode', this.onInitEditMode.bind(this));
         this.events.on('panel-teardown', this.onPanelTeardown.bind(this));
-        this.time = []; 
         this.timezones = ["Local Sidereal Time"].concat(moment.tz.names());
-        this.updateClock();
+        this.time = []; 
+        this.title = [];
+        this.render();
         // this.tz = moment.tz.guess();
              
         // astrojs.importPackages(['dates']);
@@ -86,27 +89,43 @@ export class ClockCtrl extends PanelCtrl {
     onPanelTeardown() {
         this.$timeout.cancel(this.nextTickPromise);
     }
-
-    updateClock() {
-        for (var i = 0; i < this.panel.clocks.length; i++) {
-            if (this.panel.clocks[i][1] == "Local Sidereal Time") {
-                this.time[i] = getLST(this.panel.longitude);
+    
+    render() {
+        if (this.elem != null) {
+            var rect = this.elem.getBoundingClientRect();
+            if (rect.width < 415) {
+                this.panel.titleFontSize = '8px';
+                this.panel.clockFontSize = '12px';
             }
-            else if (this.panel.clocks[i][1] == "") {
-                // moment.tz.guess() not a function??
-                this.time[i] = moment().format('HH:mm:ss z');
+            else if (rect.width < 640) {
+                this.panel.titleFontSize = '12px';
+                this.panel.clockFontSize = '16px';
             }
             else {
-                this.time[i] = moment().tz(this.panel.clocks[i][1]).format('HH:mm:ss z');
+                this.panel.titleFontSize = '20px';
+                this.panel.clockFontSize = '28px';
+            }
+            for (var i = 0; i < this.panel.clocks.length; i++) {
+                this.title[i] = this.panel.clocks[i][0];
+                if (this.panel.clocks[i][1] == "Local Sidereal Time") {
+                    this.time[i] = getLST(this.panel.longitude);
+                }
+                else if (this.panel.clocks[i][1] == "") {
+                    // moment.tz.guess() not a function??
+                    this.time[i] = moment().format('HH:mm:ss z');
+                }
+                else {
+                    this.time[i] = moment().tz(this.panel.clocks[i][1]).format('HH:mm:ss z');
+                }
             }
         }
-        this.$timeout(() => { this.updateClock(); }, 1000);
+        this.$timeout(() => { this.render(); }, 1000);
     }
 
     link(scope, elem) {
+        this.elem = elem.find('.clock-panel')[0];
         this.events.on('render', () => {
             const $panelContainer = elem.find('.panel-container');
-
             if (this.panel.bgColor) {
                 $panelContainer.css('background-color', this.panel.bgColor);
             } else {
