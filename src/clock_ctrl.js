@@ -4,9 +4,9 @@ import moment from './lib/moment-timezone-with-data.min';
 import './css/clock-panel.css!';
 
 const panelDefaults = {
-    titleFontSize: '20px',
-    clockFontSize: '28px',
-    padding: '15px',
+    titleFontSize: 20,
+    clockFontSize: 28,
+    padding: 15,
     fontWeight: 'normal',
     bgColor: null,
     longitude: 116.632311,
@@ -75,6 +75,9 @@ export class ClockCtrl extends PanelCtrl {
         this.time = []; 
         this.title = [];
         this.render();
+        this.titleFontSize = this.panel.titleFontSize.toString() + "px";
+        this.clockFontSize = this.panel.clockFontSize.toString() + "px";
+        this.padding = this.panel.padding.toString() + "px";
         // this.tz = moment.tz.guess();
              
         // astrojs.importPackages(['dates']);
@@ -91,20 +94,18 @@ export class ClockCtrl extends PanelCtrl {
     }
     
     render() {
+        var scale = 1.0;
         if (this.elem != null) {
             var rect = this.elem.getBoundingClientRect();
             if (rect.width < 415) {
-                this.panel.titleFontSize = '8px';
-                this.panel.clockFontSize = '12px';
+                scale = 0.4;
             }
             else if (rect.width < 640) {
-                this.panel.titleFontSize = '12px';
-                this.panel.clockFontSize = '16px';
+                scale = 0.6;
             }
-            else {
-                this.panel.titleFontSize = '20px';
-                this.panel.clockFontSize = '28px';
-            }
+            this.titleFontSize = Math.floor(this.panel.titleFontSize * scale).toString() + "px";
+            this.clockFontSize = Math.floor(this.panel.clockFontSize * scale).toString() + "px";
+            this.padding = this.panel.padding.toString() + "px";
             for (var i = 0; i < this.panel.clocks.length; i++) {
                 this.title[i] = this.panel.clocks[i][0];
                 if (this.panel.clocks[i][1] == "Local Sidereal Time") {

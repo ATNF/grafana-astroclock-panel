@@ -109,9 +109,9 @@ System.register(['app/plugins/sdk', './lib/moment-timezone-with-data.min', './cs
             }();
 
             panelDefaults = {
-                titleFontSize: '20px',
-                clockFontSize: '28px',
-                padding: '15px',
+                titleFontSize: 20,
+                clockFontSize: 28,
+                padding: 15,
                 fontWeight: 'normal',
                 bgColor: null,
                 longitude: 116.632311,
@@ -134,6 +134,9 @@ System.register(['app/plugins/sdk', './lib/moment-timezone-with-data.min', './cs
                     _this.time = [];
                     _this.title = [];
                     _this.render();
+                    _this.titleFontSize = _this.panel.titleFontSize.toString() + "px";
+                    _this.clockFontSize = _this.panel.clockFontSize.toString() + "px";
+                    _this.padding = _this.panel.padding.toString() + "px";
                     // this.tz = moment.tz.guess();
 
                     // astrojs.importPackages(['dates']);
@@ -157,18 +160,17 @@ System.register(['app/plugins/sdk', './lib/moment-timezone-with-data.min', './cs
                     value: function render() {
                         var _this2 = this;
 
+                        var scale = 1.0;
                         if (this.elem != null) {
                             var rect = this.elem.getBoundingClientRect();
                             if (rect.width < 415) {
-                                this.panel.titleFontSize = '8px';
-                                this.panel.clockFontSize = '12px';
+                                scale = 0.4;
                             } else if (rect.width < 640) {
-                                this.panel.titleFontSize = '12px';
-                                this.panel.clockFontSize = '16px';
-                            } else {
-                                this.panel.titleFontSize = '20px';
-                                this.panel.clockFontSize = '28px';
+                                scale = 0.6;
                             }
+                            this.titleFontSize = Math.floor(this.panel.titleFontSize * scale).toString() + "px";
+                            this.clockFontSize = Math.floor(this.panel.clockFontSize * scale).toString() + "px";
+                            this.padding = this.panel.padding.toString() + "px";
                             for (var i = 0; i < this.panel.clocks.length; i++) {
                                 this.title[i] = this.panel.clocks[i][0];
                                 if (this.panel.clocks[i][1] == "Local Sidereal Time") {
