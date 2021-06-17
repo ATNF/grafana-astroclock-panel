@@ -13,15 +13,15 @@ Hash: SHA512
     "http://localhost:3000/"
   ],
   "plugin": "atnf-astroclock-panel",
-  "version": "0.0.5",
-  "time": 1623912848269,
+  "version": "0.0.6",
+  "time": 1623913453810,
   "keyId": "7e4d0c6a708866e7",
   "files": {
     "css/clock-panel.css": "1fd1e8ef59d9cd1b973759470b6d62df149f75791edb9e9c66e6ff929ad1386d",
     "module.html": "303509577757888022857e552d0f0677df14e16f4f68eccad5446b6176d0efaa",
     "editor.html": "7ce08b1438f4d0ff9db40876c2a871e4136e150479a0907adb068dd4692e0528",
     "module.js.map": "23838871ed3f03bcca70e8016c1021afaefe410232386fec9717cfa44b06389f",
-    "plugin.json": "4315f22a46bdc1fe35aa9d072543d9e60e226a48ba39e7c61300d7b791582f5b",
+    "plugin.json": "c4aeda9fa97a9d538cadfbb01e4a842b348844d93eddda37cbc02bc7618f697e",
     "README.md": "7a7cbf6ad7044ecb39e814db9dd86818e12319cbbb1e5373a7d8e3cefd3e421f",
     "img/logo.png": "56d7468cd36cb3c3df93c892ee16b4ef98ada01d85088536df37142fe6aa8b54",
     "module.js": "c0e6a813e43dcd3e23874c306c7790b791bb682a0c2f862d66073b5daf3f080f",
@@ -34,9 +34,9 @@ Hash: SHA512
 Version: OpenPGP.js v4.10.1
 Comment: https://openpgpjs.org
 
-wqEEARMKAAYFAmDK8ZAACgkQfk0ManCIZuesWAIJAbGaHg2QeZ8NVQFyrUuB
-73gm3qu6ud4TfBiz/c4Wg4jBl67zcVyNj8+cZHmZ5xqBwFFJLmxZF5Sleorb
-Ma1wJpCMAgY1mh33/CA5C4E0lFQATD3YdtuwAL+IP9MrsjTH9smdnhQRst8Y
-6VEJJ6HLmf7tgzRB5t91/nQgLvfLH4M1dtF8Qg==
-=Y9PW
+wqIEARMKAAYFAmDK8+0ACgkQfk0ManCIZucgQwIJAV/5blWqxoeXAuV7nvD8
+sC50Kxwvm2vc6TKU80NrtmO/UjIsOWLbnpnyDASX/xoTHNV82CM5EuLy7WfF
+NZqYo0BoAgkBkvnURYcHs5uXPSGtwh/7BdCogXbsIllbA/taiD1vR1XWVLkM
+mqSStQ9IWoD4JaY6xpi+Oj4op5fPTak7lC0V1P4=
+=o92x
 -----END PGP SIGNATURE-----
