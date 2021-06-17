@@ -1,0 +1,42 @@
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+{
+  "manifestVersion": "2.0.0",
+  "signatureType": "private",
+  "signedByOrg": "atnf",
+  "signedByOrgName": "atnf",
+  "rootUrls": [
+    "https://monview-mro.atnf.csiro.au/",
+    "https://monview-pks.atnf.csiro.au/",
+    "http://localhost:3000/"
+  ],
+  "plugin": "atnf-astroclock-panel",
+  "version": "0.0.5",
+  "time": 1623912848269,
+  "keyId": "7e4d0c6a708866e7",
+  "files": {
+    "css/clock-panel.css": "1fd1e8ef59d9cd1b973759470b6d62df149f75791edb9e9c66e6ff929ad1386d",
+    "module.html": "303509577757888022857e552d0f0677df14e16f4f68eccad5446b6176d0efaa",
+    "editor.html": "7ce08b1438f4d0ff9db40876c2a871e4136e150479a0907adb068dd4692e0528",
+    "module.js.map": "23838871ed3f03bcca70e8016c1021afaefe410232386fec9717cfa44b06389f",
+    "plugin.json": "4315f22a46bdc1fe35aa9d072543d9e60e226a48ba39e7c61300d7b791582f5b",
+    "README.md": "7a7cbf6ad7044ecb39e814db9dd86818e12319cbbb1e5373a7d8e3cefd3e421f",
+    "img/logo.png": "56d7468cd36cb3c3df93c892ee16b4ef98ada01d85088536df37142fe6aa8b54",
+    "module.js": "c0e6a813e43dcd3e23874c306c7790b791bb682a0c2f862d66073b5daf3f080f",
+    "clock_ctrl.js.map": "99a7bd7eeab669c8be99568824877b9b548cf8dd48779f0fb1d7d33e32ec4d03",
+    "lib/moment-timezone-with-data.min.js": "14964e10b8309df411746f0a65449609882e7040837f8c3991f41d41219b5692",
+    "clock_ctrl.js": "cd1620764bf8996b32f7953452bbd2825ba7f071afbeb3b12109e1b0fd7fc9f4"
+  }
+}
+-----BEGIN PGP SIGNATURE-----
+Version: OpenPGP.js v4.10.1
+Comment: https://openpgpjs.org
+
+wqEEARMKAAYFAmDK8ZAACgkQfk0ManCIZuesWAIJAbGaHg2QeZ8NVQFyrUuB
+73gm3qu6ud4TfBiz/c4Wg4jBl67zcVyNj8+cZHmZ5xqBwFFJLmxZF5Sleorb
+Ma1wJpCMAgY1mh33/CA5C4E0lFQATD3YdtuwAL+IP9MrsjTH9smdnhQRst8Y
+6VEJJ6HLmf7tgzRB5t91/nQgLvfLH4M1dtF8Qg==
+=Y9PW
+-----END PGP SIGNATURE-----
